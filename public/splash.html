@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" rel="stylesheet"/>
+    <link href="stylesheets/style.css" rel="stylesheet"/>
+    <!-- latest NES.css -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet"/>
+    <title>SPACERAIDER</title>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/splash.js"></script>
+
+    <main>
+        <!-- Nameplate area for displaying top right title screen text. -->
+        <header id="nameplate">
+            <h1>Galaxy Raider</h1>
+            <h2>Fight through the cosmos and bring back what is rightfully ours - J'Son</h2>
+        </header>
+        <!-- Ships section of clickable buttons. -->
+        <section id="ships">
+            <h3>Select a ship</h3>
+            <div id="shipImages">
+                <img id="YShip" src="">
+                <img id="BracketShip" src="">
+                <img id="IceShip" src="">
+                <img id="ButterflyShip" src="">
+                <img id="RollerShip" src="">
+            </div>
+        </section>
+        <!-- gameSettings section of clickable buttons. -->
+        <section id="gameSettings">
+            <div id="raceHeader">
+                <h3>Choose a race</h3>
+            </div>
+            <div id="raceSelections">
+                <h3>Centurians</h3>
+                <h3>Terran (Humans)</h3>
+                <h3>Xandarians</h3>
+            </div>
+            <div id="optionsHeader">
+                <h3>Choose Age</h3>
+                <h3>Choose Profession</h3>
+            </div>
+            <div id="optionsSelection">
+                <h3>Young</h3>
+                <h3>Middle</h3>
+                <h3>Old</h3>
+                <h3>Engineering</h3>
+                <h3>Cooking</h3>
+                <h3>Financier</h3>
+            </div>
+        </section> 
+        <!-- End of gameSettings section. -->
+        <!-- Start play section.  -->
+        <section id="play">
+            <p id="description"></p>
+            <div id="playButton"></div>
+        </section>
+        <!-- Starting section for infomation panel of Instructions, Highscores, and About. -->
+        <section id="information">
+            <div id="instructions" class="informationButtons">
+                <p>Instructions</p>
+            </div>
+            <div id="highscores" class="informationButtons">
+                <p>Highscores</p>
+            </div>
+            <div id="about" class="informationButtons">
+                <p>About</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

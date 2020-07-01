@@ -1,4 +1,12 @@
-form.signup,
-form.login {
-  margin-top: 50px;
+/* General Layout (CSS GRID) */
+.container {
+  display: grid;
+  grid-template-columns: 0.5em 0.5em auto 0.5em 0.5em;
+  grid-template-rows: 25% 100px auto;
+  grid-template-areas: 
+      "header header header header"
+      "main main . sidebar"
+      "footer footer footer footer";
+
 }
+

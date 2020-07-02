@@ -146,6 +146,14 @@ body {
   background-color:#d3ac0f;
 }
 
+.selected {
+  background-color: #d3ac0f;
+}
+
+.notselected {
+  background-color: oldlace;
+}
+
 #optionsHeader h3 {
   font-size: 0.7em;
   margin: 0;

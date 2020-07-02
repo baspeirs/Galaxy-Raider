@@ -1,12 +1,195 @@
 /* General Layout (CSS GRID) */
-.container {
-  display: grid;
-  grid-template-columns: 0.5em 0.5em auto 0.5em 0.5em;
-  grid-template-rows: 25% 100px auto;
-  grid-template-areas: 
-      "header header header header"
-      "main main . sidebar"
-      "footer footer footer footer";
 
+#about {
+  background-color: silver;
 }
 
+#information {
+  background-color: white;
+  color: black;
+  text-align: center;
+  grid-area: about;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 0.4em;
+}
+
+#optionsSelection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+#optionsHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-content: space-evenly;
+  text-align: center;
+}
+
+#raceHeader {
+  display: grid;
+  text-align: center;
+  height: 3em;
+}
+
+#playButton {
+  padding: 10px;
+}
+
+#play {
+  grid-area: play;
+  background-color: royalblue;
+  display: grid;
+  grid-template-rows: 1fr 0.3fr 1fr;
+  text-align: center;
+}
+
+#shipImages {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  column-gap: 1em;
+  color: black;
+  justify-content: space-around;
+}
+
+#ships {
+  grid-area: ship;
+  background-color: white;
+  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 0.3fr auto;
+  margin:0;
+}
+
+#nameplate {
+  grid-area: header;
+  background-color: #d3ac0f;
+  color: black;
+  border: solid navy 7px;
+  text-align: center;
+}
+
+#gameSettings {
+  height: 100%;
+  grid-area: game;
+  background-color: oldlace;
+  display: grid;
+  row-gap: 1em;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 42% 16% 42%;
+  grid-template-rows: 25% 20% auto - 2em;
+  grid-template-areas: 
+      "header header header"
+      "ship ship ship"
+      "game play about";
+  color: black;
+  padding: 1em;
+  row-gap: 2em;
+
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+#nameplate h1 {
+  font-size: 3em;
+}
+
+#nameplate h2 {
+  font-size: 1em;
+}
+
+#shipImages p {
+  font-size: 0.7em;
+  margin: 0.5em 0;
+  display: grid;
+  align-content: space-evenly;
+  text-align: center;
+}
+
+#shipImages p:hover {
+  color: #d3ac0f;
+}
+
+#ships h3 {
+  font-size: 1.2em;
+  display: grid;
+  align-content: space-evenly;
+  text-align: center;
+  margin: 10px;
+  color: black;
+}
+
+#raceHeader h3 {
+  display: grid;
+  margin: 0;
+  align-content: space-evenly;
+}
+
+#raceSelection h3 {
+  display: inline-block;
+  width: auto;
+  font-size: 0.7em;
+}
+
+#raceSelection h3:first-child {
+  margin-left: 5%; 
+}
+
+#raceSelection h3:hover {
+  background-color:#d3ac0f;
+}
+
+#optionsHeader h3 {
+  font-size: 0.7em;
+  margin: 0;
+  align-content: space-evenly;
+}
+
+#optionsSelection h3 {
+  text-align: center;
+  padding: 0.3em;
+}
+
+#optionsSelection h3:hover {
+  background-color: #d3ac0f;
+}
+
+#optionsSelection h3:focus {
+  background-color: #d3ac0f;
+}
+
+#description, #playButton, #gameTitle {
+  margin: 0;  
+  display: grid;
+  align-content: space-evenly;
+}
+
+#playButton {
+  color: white;
+}
+
+#playButton:hover {
+  font-size: 1.7em;
+  color: #d3ac0f;
+}
+
+.informationButtons {
+  margin: 0;
+  display: grid;
+  align-content: space-evenly;
+}
+
+.informationButtons:hover {
+  background-color: silver;
+}
+
+.informationButtons p {
+  margin: 0;
+}

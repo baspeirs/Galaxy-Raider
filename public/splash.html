@@ -10,11 +10,8 @@
     <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet"/>
     <title>SPACERAIDER</title>
 </head>
-<body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/splash.js"></script>
-
-    <main>
+<body class="nes-container is-rounded is-dark">
+    <main class="container">
         <!-- Nameplate area for displaying top right title screen text. -->
         <header id="nameplate">
             <h1>Galaxy Raider</h1>
@@ -23,20 +20,26 @@
         <!-- Ships section of clickable buttons. -->
         <section id="ships">
             <h3>Select a ship</h3>
-            <div id="shipImages">
-                <img id="YShip" src="">
-                <img id="BracketShip" src="">
-                <img id="IceShip" src="">
-                <img id="ButterflyShip" src="">
-                <img id="RollerShip" src="">
-            </div>
+            <select id="shipImages">
+                <option class="shipTag"></option>
+                <option class="shipTag">YSHIP</option>
+                <!-- <img id="YShip" src=""> -->
+                <option class="shipTag">BRACKETSHIP</option>
+                <!-- <img id="BracketShip" src=""> -->
+                <option class="shipTag">ICESHIP</option>
+                <!-- <img id="IceShip" src=""> -->
+                <option class="shipTag">BUTTERFLYSHIP</option>
+                <!-- <img id="ButterflyShip" src=""> -->
+                <option class="shipTag">ROLLERSHIP</option>
+                <!-- <img id="RollerShip" src=""> -->
+            </select>
         </section>
         <!-- gameSettings section of clickable buttons. -->
         <section id="gameSettings">
             <div id="raceHeader">
                 <h3>Choose a race</h3>
             </div>
-            <div id="raceSelections">
+            <div id="raceSelection">
                 <h3>Centurians</h3>
                 <h3>Terran (Humans)</h3>
                 <h3>Xandarians</h3>
@@ -57,8 +60,9 @@
         <!-- End of gameSettings section. -->
         <!-- Start play section.  -->
         <section id="play">
-            <p id="description"></p>
-            <div id="playButton"></div>
+            <p id="description">Click to</p>
+            <a><div id="playButton">Play</div></a>
+            <p id="gameTitle">Galaxy Raider</p>
         </section>
         <!-- Starting section for infomation panel of Instructions, Highscores, and About. -->
         <section id="information">
@@ -73,5 +77,7 @@
             </div>
         </section>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/splash.js"></script>
 </body>
 </html>

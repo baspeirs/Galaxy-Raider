@@ -6,7 +6,20 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 len: [2]
             }
+        },
+        // associate: models => {
+        //     Race.belongsTo(models.Planet, {foreignKey: "planetId"})
+        // }
+        planetId: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'Planets', // 'persons' refers to table name
+                key: 'id' // 'id' refers to column name in persons table
+            }
         }
     });
-    return Planet;
+    // Race.associate = models => {
+    //     Race.belongsTo(models.Planet, {as: "occupied_race", constraints: false})
+    // }
+    return Race;
 };

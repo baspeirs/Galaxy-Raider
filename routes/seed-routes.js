@@ -83,10 +83,19 @@ module.exports = function (app) {
     });
 
     app.get("/seeds/races", (req, res) => {
-        db.Planet.sync({ force: true }).then(() => {
-            db.Planet.bulkCreate(
+        db.Race.sync({ force: true }).then(() => {
+            db.Race.bulkCreate(
                 [{
-
+                    name: "Terran",
+                    planetId: 5
+                },
+                {
+                    name: "Centaurian",
+                    planetId: 8
+                },
+                {
+                    name: "Xandarian",
+                    planetId: 1
                 }
             ]
             )

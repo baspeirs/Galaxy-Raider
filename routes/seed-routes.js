@@ -104,4 +104,42 @@ module.exports = function (app) {
               })
         });
     });
+    app.get("/seeds/ages", (req, res) => {
+        db.Age.sync({ force: true }).then(() => {
+            db.Age.bulkCreate(
+                [{
+                    name: "Young"
+                },
+                {
+                    name: "Middle"
+                },
+                {
+                    name: "Old"
+                }
+            ]
+            )
+            .then((result) => {
+                res.json(result);
+              })
+        });
+    });
+    app.get("/seeds/professions", (req, res) => {
+        db.Profession.sync({ force: true }).then(() => {
+            db.Profession.bulkCreate(
+                [{
+                    name: "Engineer"
+                },
+                {
+                    name: "Cook"
+                },
+                {
+                    name: "Financier"
+                }
+            ]
+            )
+            .then((result) => {
+                res.json(result);
+              })
+        });
+    });
 };

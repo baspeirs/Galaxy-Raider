@@ -1,3 +1,5 @@
+// this collects all of the models and 
+
 'use strict';
 
 var fs        = require('fs');

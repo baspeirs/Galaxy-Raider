@@ -15,21 +15,17 @@ module.exports = function(sequelize, DataTypes) {
             }
         },
         hostile_race: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [2]
-            }
+            type: DataTypes.STRING
         },
-        engineering_recources: {
+        engineering_resources: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        occupied_race: {
+        cooking_resources: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        financier_recource: {
+        financier_resources: {
             type: DataTypes.INTEGER,
             allowNull: false
         }

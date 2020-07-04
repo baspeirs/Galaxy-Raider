@@ -3,21 +3,6 @@ const db = require ("../models");
 const passport = require("../config/passport");
 
 module.exports = function(app) {
-  // Using the passport.authenticate middleware with our local strategy.
-  // If the user has valid login credentials, send them to the members page.
-  // Otherwise the user will be sent an error
-  // ================================= sign in code ===========================
-  // app.post("/api/login", passport.authenticate("local"), (req, res) => {
-  //   // Sending back a password, even a hashed password, isn't a good idea
-  //   res.json({
-  //     email: req.user.email,
-  //     id: req.user.id
-  //   });
-  // });
-
-  // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-  // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
-  // otherwise send back an error
   app.post("/api/characters", (req, res) => {
     db.Character.create({
       name: req.body.name,
@@ -38,17 +23,45 @@ module.exports = function(app) {
       });
   });
 
-  // Route for logging user out
-  app.get("/logout", (req, res) => {
-    req.logout();
-    res.redirect("/");
+  // Route for getting all races and their corresponding planetId
+  app.get("/api/races", (req, res) => {
+    db.Race.findAll({
+      attributes: ["name", "planetId"]
+    }).then(result => {
+      return res.json(result)
+    })
   });
 
-  // Route for getting some data about our user to be used client side
+  // Route for getting planet data
   app.get("/api/planets", (req, res) => {
-    console.log(res.body)
-      // res.json({
-      //   id: res.planets.id
-      // });
+    db.Planet.findAll({
+      attributes: ["name", "occupied_race", "hostile_race", "engineering_resources", "cooking_resources", "financier_resources",]
+    }).then(result => {
+      return res.json(result);
+    })
+  });
+
+  app.get("/api/characters", (req, res) => {
+    db.Character.findAll({
+      attributes: ["name", "race", "age", "profession", "score", "planetId", "raceId", "ageId", "professionId"]
+    }).then(result => {
+      return res.json(result);
+    })
+  });
+
+  app.get("/api/ages", (req, res) => {
+    db.Age.findAll({
+      attributes: ["name"]
+    }).then(result => {
+      return res.json(result)
+    })
+  });
+
+  app.get("/api/professions", (req, res) => {
+    db.Profession.findAll({
+      attributes: ["name"]
+    }).then(result => {
+      return res.json(result)
+    })
   });
 };

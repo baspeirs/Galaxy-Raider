@@ -1,38 +1,34 @@
 module.exports = function(sequelize, DataTypes) {
-  const Planet = sequelize.define("Planet", {
+  const Character = sequelize.define("Character", {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [2]
+        len: [2, 30]
       }
     },
-    occupied_race: {
+    race: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [2]
+        len: [1]
       }
     },
-    hostile_race: {
+    age: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    profession: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [2]
+        len: [1]
       }
     },
-    engineering_recources: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    occupied_race: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    financier_recource: {
+    score: {
       type: DataTypes.INTEGER,
       allowNull: false
     }
   });
-  return Planet;
+  return Character;
 };

@@ -53,6 +53,8 @@ $(document).ready(() => {
       const userName = $("#name_field").val();
       console.log(userName);
       loadValues(userName);
+      // Load user into startingPlanet.html
+      window.location.replace("/startingplanet");
       return userName;
     });
     // Load next page.

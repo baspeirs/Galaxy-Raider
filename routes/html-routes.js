@@ -44,6 +44,13 @@ module.exports = function(app) {
     });
   });
 
+  // Recieving made character data from splash page.
+  app.post("/", (req, res) => {
+    console.log(req.body);
+    console.log(req.body.ship);
+    // res.render("startingPlanet", testData[1]);
+  });
+
   app.get("/startingplanet", (req, res) => {
     res.render("startingPlanet", testData[1]);
   });

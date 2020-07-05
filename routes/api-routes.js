@@ -52,12 +52,6 @@ module.exports = function(app) {
       });
   });
 
-  // Recieving made character data from splash page.
-  app.post("/", (req, res) => {
-    console.log(req.body);
-    res.end();
-  });
-
   // Route for getting all races and their corresponding planetId
   app.get("/api/races", (req, res) => {
     db.Race.findAll({

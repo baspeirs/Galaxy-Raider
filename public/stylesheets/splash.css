@@ -1,4 +1,8 @@
 /* General Layout (CSS GRID) */
+.nes-dialog .dialog-menu {
+  padding: 0;
+  margin-top: auto;
+}
 
 #about {
   background-color: silver;
@@ -16,6 +20,7 @@
 
 #optionsSelection {
   display: grid;
+  grid-auto-flow: column;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
 }
@@ -200,4 +205,8 @@ body {
 
 .informationButtons p {
   margin: 0;
+}
+
+#dialog-default {
+  margin-top: 25%;
 }

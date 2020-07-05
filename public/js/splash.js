@@ -53,6 +53,8 @@ $(document).ready(() => {
       const userName = $("#name_field").val();
       console.log(userName);
       loadValues(userName);
+      // Load user into startingPlanet.html
+      window.location.replace("/startingplanet");
       return userName;
     });
     // Load next page.
@@ -121,7 +123,7 @@ $(document).ready(() => {
   const sendCharacter = gameSettings => {
     console.log("From splash.js AJAX: ", gameSettings);
     return $.ajax({
-      url: "/api/character",
+      url: "/",
       data: gameSettings,
       method: "POST"
     });

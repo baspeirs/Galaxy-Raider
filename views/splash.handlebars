@@ -1,0 +1,116 @@
+<link href="stylesheets/splash.css" rel="stylesheet"/>
+<main class="container">
+    <!-- Nameplate area for displaying top right title screen text. -->
+    <header id="nameplate">
+        <h1>Galaxy Raider with Handlebars.</h1>
+        <h2>Fight through the cosmos and bring back what is rightfully ours - J'Son</h2>
+    </header>
+    <!-- Ships section of clickable buttons. -->
+    <section id="ships">
+        <h3>Select a ship</h3>
+        <select id="shipImages">
+            <option class="shipTag"></option>
+            {{#each ships}}
+                <option>{{this}}</option>
+            {{/each}}
+        </select>
+    </section>
+    <!-- gameSettings section of clickable buttons. -->
+    <section id="gameSettings">
+        <div id="raceHeader">
+            <h3>Choose a race</h3>
+        </div>
+        <div id="raceSelection">
+            {{#each races}}
+                <h3 class="raceTag">{{this}}</h3>
+            {{/each}}
+        </div>
+        <div id="optionsHeader">
+            <h3>Choose Age</h3>
+            <h3>Choose Profession</h3>
+        </div>
+        <div id="optionsSelection">
+            {{#each ages}}
+                <h3 class="ageTag">{{this}}</h3>
+            {{/each}}
+            {{#each professions}}
+                <h3 class="professionTag">{{this}}</h3>
+            {{/each}}
+        </div>
+    </section> 
+    <!-- End of gameSettings section. -->
+    <!-- Start play section.  -->
+    <section id="play">
+        <p id="description">Click to</p>
+        <a><div id="playButton">Play</div></a>
+        <p id="gameTitle">Galaxy Raider</p>
+        <!-- Modal prompt for entering name. -->
+        <dialog class="nes-dialog" id="dialog-name">
+            <form method="dialog">
+                <div class="nes-field">
+                    <label for="name_field">Your name</label>
+                    <input type="text" id="name_field" class="nes-input">
+                </div>
+                <button id="nameSubmit" type="button" class="nes-btn is-primary">Enter</button>
+            </form>
+            </dialog>
+        <!-- Modal prompt if you didnt select a ship. -->
+        <dialog class="nes-dialog" id="dialog-ship">
+            <form method="dialog">
+                <div class="nes-field">
+                    <label for="name_field">Please select a ship.</label>
+                    <menu class="dialog-menu">
+                        <button class="nes-btn">Close</button>
+                    </menu>
+                </div>
+            </form>
+        </dialog>
+        <!-- Modal prompt if you didnt enter a race. -->
+        <dialog class="nes-dialog" id="dialog-race">
+            <form method="dialog">
+                <div class="nes-field">
+                    <label for="name_field">Please enter a race.</label>
+                    <menu class="dialog-menu">
+                        <button class="nes-btn">Close</button>
+                    </menu>
+                </div>
+            </form>
+        </dialog>
+        <!-- Modal prompt if you didnt enter a age. -->
+        <dialog class="nes-dialog" id="dialog-age">
+            <form method="dialog">
+                <div class="nes-field">
+                    <label for="name_field">Please enter a age.</label>
+                    <menu class="dialog-menu">
+                        <button class="nes-btn">Close</button>
+                    </menu>
+                </div>
+            </form>
+        </dialog>
+        <!-- Modal prompt if you didnt enter a profession. -->
+        <dialog class="nes-dialog" id="dialog-profession">
+            <form method="dialog">
+                <div class="nes-field">
+                    <label for="name_field">Please enter a profession.</label>
+                    <menu class="dialog-menu">
+                        <button class="nes-btn">Close</button>
+                    </menu>
+                </div>
+            </form>
+        </dialog>
+    </section>
+    <!-- Starting section for infomation panel of Instructions, Highscores, and About. -->
+    <section id="information">
+        <div id="instructions" class="informationButtons">
+            <p>Instructions</p>
+        </div>
+        <div id="highscores" class="informationButtons">
+            <p>Highscores</p>
+        </div>
+        <div id="about" class="informationButtons">
+            <p>About</p>
+        </div>
+    </section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/splash.js"></script>

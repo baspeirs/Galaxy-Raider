@@ -40,21 +40,3 @@ db.sequelize.sync().then(() => {
     );
   });
 });
-
-// Data
-const testData = [
-  {
-    characterOptions: {}
-  },
-  {
-    planet: []
-  }
-];
-
-// Routes
-app.get("/", (req, res) => {
-  res.render("splash", testData[0]);
-});
-app.get("/startingplanet", (req, res) => {
-  res.render("startingPlanet", testData[1]);
-});

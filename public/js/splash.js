@@ -121,7 +121,7 @@ $(document).ready(() => {
   const sendCharacter = gameSettings => {
     console.log("From splash.js AJAX: ", gameSettings);
     return $.ajax({
-      url: "/api/character",
+      url: "/",
       data: gameSettings,
       method: "POST"
     });

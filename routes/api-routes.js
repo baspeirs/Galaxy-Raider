@@ -1,5 +1,5 @@
 // Requiring our models and passport as we've configured it
-const db = require ("../models");
+const db = require("../models");
 const passport = require("../config/passport");
 
 module.exports = function(app) {
@@ -31,7 +31,7 @@ module.exports = function(app) {
     // })
     // .catch(err => {
     //   res.status(401).json(err);
-    // });
+  });
   app.post("/api/characters", (req, res) => {
     db.Character.create({
       name: req.body.name,
@@ -40,8 +40,8 @@ module.exports = function(app) {
       age: req.body.age,
       score: req.body.score
     })
-      .then((result) => {
-        console.log(result)
+      .then(result => {
+        console.log(result);
         res.json(result);
         // res.json({ id: result.insertId });
         // key on result we are looking for might be defaultValues
@@ -52,45 +52,68 @@ module.exports = function(app) {
       });
   });
 
+  // Recieving made character data from splash page.
+  app.post("/", (req, res) => {
+    console.log(req.body);
+    res.end();
+  });
+
   // Route for getting all races and their corresponding planetId
   app.get("/api/races", (req, res) => {
     db.Race.findAll({
       attributes: ["name", "planetId"]
     }).then(result => {
-      return res.json(result)
-    })
+      return res.json(result);
+    });
   });
 
   // Route for getting planet data
   app.get("/api/planets", (req, res) => {
     db.Planet.findAll({
-      attributes: ["name", "occupied_race", "hostile_race", "engineering_resources", "cooking_resources", "financier_resources",]
+      attributes: [
+        "name",
+        "occupied_race",
+        "hostile_race",
+        "engineering_resources",
+        "cooking_resources",
+        "financier_resources"
+      ]
     }).then(result => {
       return res.json(result);
-    })
+    });
   });
 
   app.get("/api/characters", (req, res) => {
     db.Character.findAll({
-      attributes: ["name", "race", "age", "profession", "score", "planetId", "raceId", "ageId", "professionId"]
+      attributes: [
+        "name",
+        "race",
+        "age",
+        "profession",
+        "score",
+        "planetId",
+        "raceId",
+        "ageId",
+        "professionId"
+      ]
     }).then(result => {
       return res.json(result);
-    })
+    });
   });
 
   app.get("/api/ages", (req, res) => {
     db.Age.findAll({
       attributes: ["name"]
     }).then(result => {
-      return res.json(result)
-    })
+      return res.json(result);
+    });
   });
 
   app.get("/api/professions", (req, res) => {
     db.Profession.findAll({
       attributes: ["name"]
     }).then(result => {
-      return res.json(result)
-    })
+      return res.json(result);
+    });
   });
 };

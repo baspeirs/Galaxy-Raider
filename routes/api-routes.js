@@ -5,11 +5,11 @@ const passport = require("../config/passport");
 module.exports = function(app) {
   app.post("/api/characters", (req, res) => {
     db.Character.create({
-      name: req.body.name,
-      race: req.body.race,
+      char_name: req.body.char_name,
       profession: req.body.profession,
       age: req.body.age,
-      score: req.body.score
+      score: req.body.score,
+      RaceId: req.body.RaceId
     })
       .then((result) => {
         console.log(result)
@@ -26,7 +26,7 @@ module.exports = function(app) {
   // Route for getting all races and their corresponding planetId
   app.get("/api/races", (req, res) => {
     db.Race.findAll({
-      attributes: ["name", "planetId"]
+      include: [{ all: true, nested: true }]
     }).then(result => {
       return res.json(result)
     })
@@ -35,15 +35,14 @@ module.exports = function(app) {
   // Route for getting planet data
   app.get("/api/planets", (req, res) => {
     db.Planet.findAll({
-      attributes: ["name", "occupied_race", "hostile_race", "engineering_resources", "cooking_resources", "financier_resources",]
-    }).then(result => {
+      include: [{ all: true, nested: true }]    }).then(result => {
       return res.json(result);
     })
   });
 
   app.get("/api/characters", (req, res) => {
     db.Character.findAll({
-      attributes: ["name", "race", "age", "profession", "score", "planetId", "raceId", "ageId", "professionId"]
+      attributes: ["char_name", "race", "age", "profession", "score"]
     }).then(result => {
       return res.json(result);
     })
@@ -60,6 +59,15 @@ module.exports = function(app) {
   app.get("/api/professions", (req, res) => {
     db.Profession.findAll({
       attributes: ["name"]
+    }).then(result => {
+      return res.json(result)
+    })
+  });
+
+  // this is for testing our forein keys
+  app.get("/api/foreignkeytest", (req, res) => {
+    db.Character.findAll({
+      include: [{ all: true, nested: true }]
     }).then(result => {
       return res.json(result)
     })

@@ -8,138 +8,63 @@ const db = require("../models");
 
 module.exports = function (app) {
     app.get("/seeds/planets", (req, res) => {
-        db.Planet.sync({ force: true }).then(() => {
-            db.Planet.bulkCreate(
-                [{
-                    name: "Xandar",
-                    occupied_race: "Xandarian",
-                    hostile_race: null,
-                    engineering_resources: 0,
-                    cooking_resources: 0,
-                    financier_resources: 0
-                },
-                {
-                    name: "Knowhere",
-                    occupied_race: "Mix",
-                    hostile_race: "Tarran",
-                    engineering_resources: 0,
-                    cooking_resources: 0,
-                    financier_resources: 0
-                },
-                {
-                    name: "Sovereign",
-                    occupied_race: "Sovereign",
-                    hostile_race: null,
-                    engineering_resources: 0,
-                    cooking_resources: 0,
-                    financier_resources: 0
-                },
-                {
-                    name: "Hala",
-                    occupied_race: "Kree",
-                    hostile_race: "Xandarian",
-                    engineering_resources: 0,
-                    cooking_resources: 0,
-                    financier_resources: 0
-                },
-                {
-                    name: "Terra",
-                    occupied_race: "Terran",
-                    hostile_race: "Centaurian",
-                    engineering_resources: 0,
-                    cooking_resources: 0,
-                    financier_resources: 0
-                },
-                {
-                    name: "Aakon",
-                    occupied_race: "Aakons",
-                    hostile_race: null,
-                    engineering_resources: 0,
-                    cooking_resources: 0,
-                    financier_resources: 0
-                },
-                {
-                    name: "Sakaar",
-                    occupied_race: "Mix",
-                    hostile_race: null,
-                    engineering_resources: 0,
-                    cooking_resources: 0,
-                    financier_resources: 0
-                },
-                {
-                    name: "Centauri-IV",
-                    occupied_race: "Centaurian",
-                    hostile_race: null,
-                    engineering_resources: 0,
-                    cooking_resources: 0,
-                    financier_resources: 0
-                },
-            ]
-            )
-            .then((result) => {
-                res.json(result);
-              })
-        });
+        db.sequelize.query("SET FOREIGN_KEY_CHECKS = 0")
+            .then(() => db.Planet.sync({ force: true }))
+            .then(() => db.sequelize.query("SET FOREIGN_KEY_CHECKS = 1"))
+            .then(() => {
+                return db.Planet.bulkCreate(require("../db/seeds/planets"));
+            })
+            .then(() => db.Planet.findAll({}))
+            .then((data) => res.json(data))
     });
 
     app.get("/seeds/races", (req, res) => {
-        db.Race.sync({ force: true }).then(() => {
-            db.Race.bulkCreate(
-                [{
-                    name: "Terran",
-                    planetId: 5
-                },
-                {
-                    name: "Centaurian",
-                    planetId: 8
-                },
-                {
-                    name: "Xandarian",
-                    planetId: 1
-                }
-            ]
-            )
-            .then((result) => {
-                res.json(result);
-              })
-        });
+        db.sequelize.query("SET FOREIGN_KEY_CHECKS = 0")
+            .then(() => db.Race.sync({ force: true }))
+            .then(() => db.sequelize.query("SET FOREIGN_KEY_CHECKS = 1"))
+            .then(() => {
+                return db.Race.bulkCreate(require("../db/seeds/races"));
+            })
+            .then(() => db.Race.findAll({ include: [{model: db.Planet, as: "Planet"}, {model: db.Planet, as: "Hostile"}] }))
+            .then((data) => res.json(data))
     });
+
     app.get("/seeds/ages", (req, res) => {
         db.Age.sync({ force: true }).then(() => {
             db.Age.bulkCreate(
                 [{
-                    name: "Young"
+                    age: "Young"
                 },
                 {
-                    name: "Middle"
+                    age: "Middle"
                 },
                 {
-                    name: "Old"
+                    age: "Old"
                 }
-            ]
+                ]
             )
-            .then((result) => {
-                res.json(result);
-              })
+                .then((result) => {
+                    res.json(result);
+                })
         });
     });
     app.get("/seeds/professions", (req, res) => {
         db.Profession.sync({ force: true }).then(() => {
             db.Profession.bulkCreate(
                 [{
-                    name: "Engineer"
+                    profession: "Engineer"
                 },
                 {
-                    name: "Cook"
+                    profession: "Cook"
                 },
                 {
-                    name: "Financier"
+                    profession: "Financier"
                 }
-            ]
+                ]
             )
-            .then((result) => {
-                res.json(result);
-              })
+                .then((result) => {
+                    res.json(result);
+                })
         });
     });
 };

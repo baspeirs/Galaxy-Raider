@@ -1,21 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
     const Planet = sequelize.define("Planet", {
-        name: {
+        planet_name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [2]
             }
-        },
-        occupied_race: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [2]
-            }
-        },
-        hostile_race: {
-            type: DataTypes.STRING
         },
         engineering_resources: {
             type: DataTypes.INTEGER,
@@ -30,5 +20,8 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         }
     });
+    Planet.associate = models => {
+        Planet.hasMany(models.Race)
+    }
     return Planet;
 };

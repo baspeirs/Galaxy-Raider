@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     const Profession = sequelize.define("Profession", {
-        name: {
+        profession: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -8,5 +8,8 @@ module.exports = function(sequelize, DataTypes) {
             }
         },
     });
+    Profession.associate = models => {
+        Profession.belongsTo(models.Character)
+    }
     return Profession;
 };

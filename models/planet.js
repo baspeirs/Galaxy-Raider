@@ -1,38 +1,27 @@
 module.exports = function(sequelize, DataTypes) {
-  const Planet = sequelize.define("Planet", {
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [2]
-      }
-    },
-    occupied_race: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [2]
-      }
-    },
-    hostile_race: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [2]
-      }
-    },
-    engineering_recources: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    occupied_race: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    financier_recource: {
-      type: DataTypes.INTEGER,
-      allowNull: false
+    const Planet = sequelize.define("Planet", {
+        planet_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [2]
+            }
+        },
+        engineering_resources: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        cooking_resources: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        financier_resources: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        }
+    });
+    Planet.associate = models => {
+        Planet.hasMany(models.Race)
     }
-  });
-  return Planet;
+    return Planet;
 };

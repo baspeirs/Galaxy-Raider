@@ -35,40 +35,34 @@ module.exports = function(app) {
   // Route for getting planet data
   app.get("/api/planets", (req, res) => {
     db.Planet.findAll({
-      include: [{ all: true, nested: true }]    }).then(result => {
-      return res.json(result);
+      include: [{ all: true, nested: true }]    })
+      .then(result => {
+        return res.json(result);
     })
   });
 
   app.get("/api/characters", (req, res) => {
     db.Character.findAll({
-      attributes: ["char_name", "race", "age", "profession", "score"]
-    }).then(result => {
+      include: [{ all: true, nested: true }]})
+    .then(result => {
       return res.json(result);
     })
   });
 
   app.get("/api/ages", (req, res) => {
     db.Age.findAll({
-      attributes: ["name"]
-    }).then(result => {
+      include: [{ all: true, nested: true }]
+    })
+    .then(result => {
       return res.json(result)
     })
   });
 
   app.get("/api/professions", (req, res) => {
     db.Profession.findAll({
-      attributes: ["name"]
-    }).then(result => {
-      return res.json(result)
-    })
-  });
-
-  // this is for testing our forein keys
-  app.get("/api/foreignkeytest", (req, res) => {
-    db.Character.findAll({
       include: [{ all: true, nested: true }]
-    }).then(result => {
+    })
+    .then(result => {
       return res.json(result)
     })
   });

@@ -1,25 +1,17 @@
 module.exports = function(sequelize, DataTypes) {
     const Race = sequelize.define("Race", {
-        name: {
+        race: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [2]
             }
         },
-        // associate: models => {
-        //     Race.belongsTo(models.Planet, {foreignKey: "planetId"})
-        // }
-        planetId: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'Planets', // 'persons' refers to table name
-                key: 'id' // 'id' refers to column name in persons table
-            }
-        }
     });
-    // Race.associate = models => {
-    //     Race.belongsTo(models.Planet, {as: "occupied_race", constraints: false})
-    // }
+    Race.associate = models => {
+        Race.belongsTo(models.Planet, {foreignKey: "PlanetId", as: "Planet", allowNull: false})
+        Race.belongsTo(models.Planet, {foreignKey: "HostileId", as: "Hostile"})
+        Race.hasMany(models.Character)
+    }
     return Race;
 };

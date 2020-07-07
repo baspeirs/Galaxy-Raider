@@ -137,14 +137,15 @@ body {
   align-content: space-evenly;
 }
 
-#raceSelection h3 {
-  display: inline-block;
-  width: auto;
-  font-size: 0.7em;
+#raceSelection {
+  display: grid;
+  grid-auto-flow: column;
 }
 
-#raceSelection h3:first-child {
-  margin-left: 5%; 
+#raceSelection h3 {
+  width: auto;
+  font-size: 0.7em;
+  text-align: center;
 }
 
 #raceSelection h3:hover {

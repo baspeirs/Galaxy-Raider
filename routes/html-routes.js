@@ -1,6 +1,6 @@
 // Requiring path to so we can use relative routes to our HTML files
 const path = require("path");
-const db = require("../models")
+const db = require("../models");
 
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
@@ -16,40 +16,21 @@ module.exports = function(app) {
           "ICESHIP",
           "BUTTERFLYSHIP",
           "ROLLERSHIP"
-        ],
-        races: ["Centurians", "Terrans (Humans)", "Xandarians"],
-        ages: ["Young", "Middle", "Old"],
-        professions: ["Engineer", "Cooking", "Financier"]
+        ]
       }
-    },
-    {
-      planet: [
-        "Xandar",
-        "Knowhere",
-        "Hala",
-        "Terra",
-        "Sovereign",
-        "Aakon",
-        "Sakaar",
-        "Centauri-IV"
-      ]
     }
   ];
-  
   // this is for localhost:8080/
   app.get("/", (req, res) => {
     db.Race.findAll({
       include: [{ all: true }]
-    })
-    .then((raceRes) => {
+    }).then(raceRes => {
       db.Age.findAll({
         include: [{ all: true }]
-      })
-      .then((ageRes) => {
+      }).then(ageRes => {
         db.Profession.findAll({
-          include: [{all: true }]
-        })
-        .then((profRes) => {
+          include: [{ all: true }]
+        }).then(profRes => {
           res.render("splash", {
             ships: testData[0].characterOptions.ships,
             races: raceRes,

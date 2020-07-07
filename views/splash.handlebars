@@ -22,7 +22,7 @@
         </div>
         <div id="raceSelection">
             {{#each races}}
-                <h3 class="raceTag">{{this}}</h3>
+                <h3 class="raceTag">{{this.dataValues.race}}</h3>
             {{/each}}
         </div>
         <div id="optionsHeader">
@@ -31,10 +31,10 @@
         </div>
         <div id="optionsSelection">
             {{#each ages}}
-                <h3 class="ageTag">{{this}}</h3>
+                <h3 class="ageTag">{{this.dataValues.age}}</h3>
             {{/each}}
             {{#each professions}}
-                <h3 class="professionTag">{{this}}</h3>
+                <h3 class="professionTag">{{this.dataValues.profession}}</h3>
             {{/each}}
         </div>
     </section> 

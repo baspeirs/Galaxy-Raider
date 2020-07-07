@@ -10,6 +10,8 @@ module.exports = function(sequelize, DataTypes) {
     });
     Age.associate = models => {
         Age.belongsTo(models.Character)
+        // ================= try this later ========================
+        // Age.belongsTo(models.Race)
     }
     return Age;
 };

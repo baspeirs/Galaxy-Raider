@@ -10,6 +10,8 @@ module.exports = function(sequelize, DataTypes) {
     });
     Profession.associate = models => {
         Profession.belongsTo(models.Character)
+        // == try this later
+        // Profession.belongsTo(models.Race)
     }
     return Profession;
 };

@@ -103,6 +103,7 @@ $(document).ready(() => {
       name: userName
     };
     sendCharacter(gameSettings);
+    sendToStartingPlanet(gameSettings);
     return gameSettings;
   }
   // Checking to make sure all requirements are met before creating userName.
@@ -156,6 +157,15 @@ $(document).ready(() => {
     }).then(() => {
       console.log("Created character!");
       window.location.replace("/startingplanet");
+    });
+  };
+
+  const sendToStartingPlanet = gameSettings => {
+    console.log("For startingPlanet.js AJAX: ", gameSettings);
+    return $.ajax({
+      url: "/api/newPage",
+      data: gameSettings,
+      method: "POST"
     });
   };
 });

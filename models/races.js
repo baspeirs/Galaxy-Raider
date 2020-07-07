@@ -13,8 +13,8 @@ module.exports = function(sequelize, DataTypes) {
         Race.belongsTo(models.Planet, {foreignKey: "HostileId", as: "Hostile"})
         Race.hasMany(models.Character)
         // == setting these so we can grab them off of the races result to send to handlebars later
-        // Race.hasMany(models.Age)
-        // Race.hasMany(modles.Profession)
+        Race.hasMany(models.Age)
+        Race.hasMany(models.Profession)
     }
     return Race;
 };

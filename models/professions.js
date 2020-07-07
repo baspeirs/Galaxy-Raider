@@ -11,7 +11,8 @@ module.exports = function(sequelize, DataTypes) {
     Profession.associate = models => {
         Profession.belongsTo(models.Character)
         // == try this later
-        // Profession.belongsTo(models.Race)
+        Profession.belongsTo(models.Race)
+        Profession.belongsTo(models.Age)
     }
     return Profession;
 };

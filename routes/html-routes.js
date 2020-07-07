@@ -38,17 +38,26 @@ module.exports = function(app) {
   
   // this is for localhost:8080/
   app.get("/", (req, res) => {
-    // db.Race.findAll({
-    //   include: [{ all: true }]
-    // })
-    // .then(result => {
-    //   res.render("splash", {races: result})
-    // })
-    res.render("splash", {
-      ships: testData[0].characterOptions.ships,
-      races: testData[0].characterOptions.races,
-      ages: testData[0].characterOptions.ages,
-      professions: testData[0].characterOptions.professions
+    db.Race.findAll({
+      include: [{ all: true }]
+    })
+    .then((raceRes) => {
+      db.Age.findAll({
+        include: [{ all: true }]
+      })
+      .then((ageRes) => {
+        db.Profession.findAll({
+          include: [{all: true }]
+        })
+        .then((profRes) => {
+          res.render("splash", {
+            ships: testData[0].characterOptions.ships,
+            races: raceRes,
+            ages: ageRes,
+            professions: profRes
+          });
+        });
+      });
     });
   });
 

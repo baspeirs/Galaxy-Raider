@@ -6,11 +6,11 @@ const db = require("../models");
 module.exports = function(app) {
   app.post("/api/characters", (req, res) => {
     db.Character.create({
-      char_name: req.body.char_name,
+      char_name: req.body.name,
       score: req.body.score,
-      RaceId: req.body.RaceId,
-      AgeId: req.body.AgeId,
-      ProfessionId: req.body.ProfessionId
+      RaceId: req.body.race,
+      AgeId: req.body.age,
+      ProfessionId: req.body.profession
     })
       .then(result => {
         console.log(result);

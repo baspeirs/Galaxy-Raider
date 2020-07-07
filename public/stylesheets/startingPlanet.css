@@ -1,0 +1,4 @@
+#details {
+    display: grid;
+    grid: 200px / 1fr 2fr 1fr;
+}

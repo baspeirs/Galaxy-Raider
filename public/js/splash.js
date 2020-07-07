@@ -75,6 +75,7 @@ $(document).ready(() => {
     };
     console.log(gameSettings);
     sendCharacter(gameSettings);
+    sendToStartingPlanet(gameSettings);
     return gameSettings;
   }
   // Checking to make sure all requirements are met before creating userName.
@@ -124,6 +125,15 @@ $(document).ready(() => {
     console.log("From splash.js AJAX: ", gameSettings);
     return $.ajax({
       url: "/",
+      data: gameSettings,
+      method: "POST"
+    });
+  };
+
+  const sendToStartingPlanet = gameSettings => {
+    console.log("For startingPlanet.js AJAX: ", gameSettings);
+    return $.ajax({
+      url: "/api/newPage",
       data: gameSettings,
       method: "POST"
     });

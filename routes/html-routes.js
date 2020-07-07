@@ -44,14 +44,27 @@ module.exports = function(app) {
 
   // Recieving made character data from splash page.
   app.post("/", (req, res) => {
-    console.log(req.body);
-    console.log(req.body.ship);
-    // res.render("startingPlanet", testData[1]);
+    testData.push(req.body);
+    console.log(testData, "to send to starting planet");
+    console.log(testData[1].profession, "to send to starting planet");
+    app.get("/startingplanet", (req, res) => {
+      res.render("startingPlanet", { char: testData[1] });
+    });
   });
 
-  app.get("/startingplanet", (req, res) => {
-    res.render("startingPlanet", testData[1]);
+  app.post("/api/newPage", (req, res) => {
+    console.log(req.body);
+    res.end();
   });
+
+  app.get("/api/newPage", (req, res) => {
+    console.log(req.body);
+    res.end();
+  });
+
+  // app.get("/startingplanet", (req, res) => {
+  //   res.render("startingPlanet", { testData });
+  // });
 
   // route to instructions.html
   app.get("/instructions", (req, res) => {

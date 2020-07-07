@@ -1,6 +1,31 @@
-<link href="stylesheets/splash.css" rel="stylesheet"/>
-<main class="container">
+<link href="stylesheets/startingPlanet.css" rel="stylesheet"/>
+<body class="container">
+    <!-- Nameplate area for displaying top right title screen text. -->
+    <header id="details">
+        <div id="planetInfo">
+            <h3 class="title">Currently playing on</h3>
+            <h2 id="planet">{{toJSON char.race}}</h3>
+        </div>
+        <div id="characterInfo">
+            <h3 class="title">Currently playing as</h3>
+            <h1 id="name">{{toJSON char.name}}</h1>
+        </div>
+        <div id="professionInfo">
+            <h3 id="title">Currently playing as</h3>
+            <h1 id="profession">{{toJSON char.profession}}</h1>
+        </div>
+    </header>
+    <main id="content">
+        <div id="ships">
 
-</main>
+        </div>
+        <div id="play">
+
+        </div>
+        <div id="instructions">
+
+        </div>
+    </main>
+</body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/splash.js"></script>
+<script type="text/javascript" src="js/startingPlanet.js"></script>

@@ -54,26 +54,54 @@ $(document).ready(() => {
       console.log(userName);
       loadValues(userName);
       // Load user into startingPlanet.html
-      window.location.replace("/startingplanet");
+      // == moved location redirect till .then in ajax request for sendCharacter function
       return userName;
     });
     // Load next page.
   }
   function loadValues(userName) {
     // bring in an array. load function on async await.
-    console.log(selectedShip);
-    console.log(selectedRace);
-    console.log(selectedAge);
-    console.log(selectedProfession);
+    // === generate numbers based on selection ===
+    let ageId;
+    let raceId;
+    let profId;
+    // == conditions for age ==
+    if (selectedRace === "Terran") {
+      raceId = 1;
+    } else if (selectedRace === "Centaurian") {
+      raceId = 2;
+    } else if (selectedRace === "Xandarian") {
+      raceId = 3;
+    }
+    // == conditions for age==
+    if (selectedAge === "Young") {
+      ageId = 1;
+    } else if (selectedAge === "Middle") {
+      ageId = 2;
+    } else if (selectedAge === "Old") {
+      ageId = 3;
+    }
+    // == condition for profession ==
+    if (selectedProfession === "Engineer") {
+      profId = 1;
+    } else if (selectedProfession === "Cook") {
+      profId = 2;
+    } else if (selectedProfession === "Financier") {
+      profId = 3;
+    }
+    // == final else
+    else {
+      console.log("Something went wrong");
+    }
+
     gameSettings = {
       // figure out where to load async await into.
-      ship: selectedShip,
-      race: selectedRace,
-      age: selectedAge,
-      profession: selectedProfession,
+      score: 0,
+      race: raceId,
+      age: ageId,
+      profession: profId,
       name: userName
     };
-    console.log(gameSettings);
     sendCharacter(gameSettings);
     return gameSettings;
   }
@@ -122,10 +150,12 @@ $(document).ready(() => {
   // A function for making AJAX call to send gameSettings data.
   const sendCharacter = gameSettings => {
     console.log("From splash.js AJAX: ", gameSettings);
-    return $.ajax({
-      url: "/",
+    return $.ajax("/api/characters", {
       data: gameSettings,
       method: "POST"
+    }).then(() => {
+      console.log("Created character!");
+      window.location.replace("/startingplanet");
     });
   };
 });

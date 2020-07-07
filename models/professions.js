@@ -1,18 +1,15 @@
 module.exports = function(sequelize, DataTypes) {
-    const Profession = sequelize.define("Profession", {
-        profession: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [2]
-            }
-        },
-    });
-    Profession.associate = models => {
-        Profession.belongsTo(models.Character)
-        // == try this later
-        Profession.belongsTo(models.Race)
-        Profession.belongsTo(models.Age)
+  const Profession = sequelize.define("Profession", {
+    profession: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [2]
+      }
     }
-    return Profession;
+  });
+  Profession.associate = models => {
+    Profession.hasMany(models.Character);
+  };
+  return Profession;
 };

@@ -154,9 +154,10 @@ $(document).ready(() => {
     return $.ajax("/api/characters", {
       data: gameSettings,
       method: "POST"
-    }).then(() => {
-      console.log("Created character!");
-      window.location.replace("/startingplanet");
+    }).then(result => {
+      console.log(`public: ${result}`);
+      // console.log("Created character!");
+      window.location.replace("/startingplanet/" + result.id);
     });
   };
 

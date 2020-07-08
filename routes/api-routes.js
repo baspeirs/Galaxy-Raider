@@ -13,11 +13,10 @@ module.exports = function(app) {
       ProfessionId: req.body.profession
     })
       .then(result => {
-        console.log(result);
-        res.json(result);
-        // res.json({ id: result.insertId });
-        // key on result we are looking for might be defaultValues
-        // try console logging on the front end and the back end if you aren't finding what you are looking for
+        console.log("api route: ");
+        console.log(result)
+        // res.json(result);
+        res.json({ id: result.id });
       })
       .catch(err => {
         res.status(401).json(err);
@@ -68,4 +67,9 @@ module.exports = function(app) {
       return res.json(result);
     });
   });
+
+  // ==== get character by ID ==
+  // app.get("/api/characters/:id", (req, res) => {
+  //   db.Character.
+  // });
 };

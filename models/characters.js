@@ -7,20 +7,6 @@ module.exports = function(sequelize, DataTypes) {
         len: [2, 30]
       }
     },
-    // age: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    //   validate: {
-    //     len: [1]
-    //   }
-    // },
-    // profession: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    //   validate: {
-    //     len: [1]
-    //   }
-    // },
     score: {
       type: DataTypes.INTEGER,
       allowNull: false

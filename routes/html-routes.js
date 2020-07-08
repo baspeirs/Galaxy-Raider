@@ -48,9 +48,6 @@ module.exports = function(app) {
     testData.push(req.body);
     console.log(testData, "to send to starting planet");
     console.log(testData[1].profession, "to send to starting planet");
-    // app.get("/startingplanet", (req, res) => {
-    //   res.render("startingPlanet", { char: testData[1] });
-    // });
   });
 
   app.post("/api/newPage", (req, res) => {
@@ -74,6 +71,7 @@ module.exports = function(app) {
       console.log(result);
       res.render("startingPlanet", { results: result });
     });
+
   });
 
   // route to instructions.html

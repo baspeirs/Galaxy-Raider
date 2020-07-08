@@ -2,3 +2,27 @@
     display: grid;
     grid: 200px / 1fr 2fr 1fr;
 }
+
+.title {
+    font-size: 0.8em;
+    color: whitesmoke;
+    text-align: center;
+    height: 40px;
+}
+
+h2 {
+    font-size: 2em;
+    color: #d3ac0f;
+}
+
+#planet {
+    margin-left: 10%;
+}
+
+#name {
+    text-align: center;
+}
+
+#profession {
+    margin-right: 10%;
+}

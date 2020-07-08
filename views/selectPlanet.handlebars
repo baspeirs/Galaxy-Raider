@@ -1,0 +1,24 @@
+<link href="stylesheets/selectPlanet.css" rel="stylesheet"/>
+<body class="container">
+    <!-- Nameplate area for displaying top right title screen text. -->
+    <main id="details">
+        <div id="planets">
+            <h4 id="planetName">{{}}</h4>
+            <p id="travelPrice">{{}}</p>
+            <button> <img>image of planet.</button>
+        </div>
+        <div id="ship">
+            <h3 class="title">Currently playing as</h3>
+            <h1 id="name">{{toJSON char.name}}</h1>
+        </div>
+        <div id="information">
+            <h3 id="fuel">Currently fuel level:</h3>
+            <h3 id="fuelValue">{{}}</h3>
+            <h3 id="fromHome">Days way from home:</h3>
+            <h3 id="fromHomeValue">{{}}</h3>
+            <h2 id="description">Select a planet to travel to..</h2>
+        </div>
+    </main>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/startingPlanet.js"></script>

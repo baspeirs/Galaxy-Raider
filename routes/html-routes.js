@@ -60,8 +60,18 @@ module.exports = function(app) {
     res.end();
   });
 
-  app.get("/startingplanet", (req, res) => {
-    res.render("startingPlanet", { char: testData[1] });
+  app.get("/startingplanet/:id", (req, res) => {
+    db.Character.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [{ all: true, nested: true }]
+    }).then(result => {
+      console.log("html route: ");
+      console.log(result);
+      res.render("startingPlanet", { results: result });
+    });
+
   });
 
   // route to instructions.html

@@ -100,7 +100,8 @@ $(document).ready(() => {
       race: raceId,
       age: ageId,
       profession: profId,
-      name: userName
+      name: userName,
+      ship: selectedShip
     };
     sendCharacter(gameSettings);
     sendToStartingPlanet(gameSettings);
@@ -163,10 +164,11 @@ $(document).ready(() => {
 
   const sendToStartingPlanet = gameSettings => {
     console.log("For startingPlanet.js AJAX: ", gameSettings);
-    return $.ajax({
-      url: "/api/newPage",
+    return $.ajax("/api/newPage", {
       data: gameSettings,
       method: "POST"
+    }).then(result => {
+      console.log(`to get ships: ${result}`);
     });
   };
 });

@@ -2,9 +2,12 @@
 const db = require("../models");
 // === passport for future use ===
 // const passport = require("../config/passport");
+let currentShip = "";
 
 module.exports = function(app) {
   app.post("/api/characters", (req, res) => {
+    console.log(req.body, "To find ships somewhere on this body");
+    currentShip = req.body.ship;
     db.Character.create({
       char_name: req.body.name,
       score: req.body.score,
@@ -68,8 +71,22 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/ships", (req, res) => {
+    console.log(currentShip);
+    return res.json({ ship: currentShip });
+  });
   // ==== get character by ID ==
   // app.get("/api/characters/:id", (req, res) => {
   //   db.Character.
   // });
+
+  app.post("/api/newPage", (req, res) => {
+    console.log(req.body);
+    res.json(req);
+  });
+
+  app.get("/api/newPage", (req, res) => {
+    console.log(req.body);
+    res.end();
+  });
 };

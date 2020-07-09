@@ -1,13 +1,44 @@
+.container {
+    height: 90vh;
+    background-size: cover;
+    display: grid;
+    grid: 1fr 1fr / 1fr;
+}
+
+#content {
+    display: grid;
+    grid: 1fr / 1fr 1fr 1fr;
+}
+
+#ships {
+    /* height: 100vh; */
+    background-size: 200px;
+    background-repeat: no-repeat;
+    margin-left: 100px;
+}
+
+#shipLabel {
+    /* margin-top: 50%; */
+    color: green;
+}
+
 #details {
     display: grid;
-    grid: 200px / 1fr 2fr 1fr;
+    grid: 200px / 1fr 1.5fr 1fr;
 }
 
 .title {
+    display: grid;
+    align-content: space-evenly;
     font-size: 0.8em;
     color: whitesmoke;
+    background-color: hsl(120, 60%, 70%, 0.3);
     text-align: center;
     height: 40px;
+}
+
+#planetInfo, #characterInfo, #professionInfo {
+    background-color: hsl(120, 100%, 30%, 0.3);
 }
 
 h2 {
@@ -16,13 +47,13 @@ h2 {
 }
 
 #planet {
-    margin-left: 10%;
+    text-align: end;
 }
 
 #name {
     text-align: center;
 }
 
-#profession {
-    margin-right: 10%;
+#next {
+    font-size: 4em;
 }

@@ -14,6 +14,7 @@ module.exports = function(app) {
       score: req.body.score,
       RaceId: req.body.race,
       AgeId: req.body.age,
+      PlanetId: req.body.planet,
       ProfessionId: req.body.profession
     })
       .then(result => {

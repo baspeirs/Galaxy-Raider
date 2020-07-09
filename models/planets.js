@@ -22,6 +22,7 @@ module.exports = function(sequelize, DataTypes) {
   });
   Planet.associate = models => {
     Planet.hasMany(models.Race);
+    Planet.hasMany(models.Character);
   };
   return Planet;
 };

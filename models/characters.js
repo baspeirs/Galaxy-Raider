@@ -16,6 +16,10 @@ module.exports = function(sequelize, DataTypes) {
     Character.belongsTo(models.Race);
     Character.belongsTo(models.Profession);
     Character.belongsTo(models.Age);
+    Character.belongsTo(models.Planet, {
+      foriegnKey: "PlanetId",
+      as: "Planet"
+    });
   };
   return Character;
 };

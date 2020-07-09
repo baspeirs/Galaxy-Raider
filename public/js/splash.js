@@ -65,17 +65,17 @@ $(document).ready(() => {
     let ageId;
     let raceId;
     let profId;
+    let planetId;
     // == conditions for age ==
     if (selectedRace === "Terran") {
       raceId = 1;
+      planetId = 5;
     } else if (selectedRace === "Centaurian") {
       raceId = 2;
+      planetId = 8;
     } else if (selectedRace === "Xandarian") {
       raceId = 3;
-    }
-    // == conditions for age==
-    if (selectedAge === "Young") {
-      ageId = 1;
+      planetId =1;
     } else if (selectedAge === "Middle") {
       ageId = 2;
     } else if (selectedAge === "Old") {
@@ -100,6 +100,7 @@ $(document).ready(() => {
       race: raceId,
       age: ageId,
       profession: profId,
+      planet: planetId,
       name: userName,
       ship: selectedShip
     };

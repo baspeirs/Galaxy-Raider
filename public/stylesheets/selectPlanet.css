@@ -1,0 +1,15 @@
+#details {
+    display: grid;
+    grid: 200px 300px / 1fr;
+}
+
+#information {
+    display: grid;
+    grid: 0.8fr 0.2fr / 1fr;
+    align-content: space-around;
+}
+
+#button1 {
+    width: 200px;
+    height: 200px
+}

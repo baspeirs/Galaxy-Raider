@@ -1,24 +1,22 @@
-<link href="stylesheets/selectPlanet.css" rel="stylesheet"/>
-<body class="container">
+<link href="/stylesheets/selectPlanet.css" rel="stylesheet"/>
+<main class="container">
     <!-- Nameplate area for displaying top right title screen text. -->
-    <main id="details">
+    <section id="details">
         <div id="planets">
             <h4 id="planetName">{{results.dataValues.Race.dataValues.Planet.dataValues.planet_name}}</h4>
-            <p id="travelPrice"></p>
+            <p id="travelPrice">travelprice</p>
+            <button id="button1" type="button" class="nes-btn is-primary"></button>
             <button> <img>image of planet.</button>
         </div>
-        <div id="resources">
-            <h3 class="title">Your resources</h3>
-            <h1 id="name">{{results.dataValues.char_name}}</h1>
-        </div>
         <div id="information">
-            <h3 id="fuel">Currently fuel level:</h3>
+            <div id="ships">ships</div>
+            {{!-- <h3 id="fuel">Currently fuel level:</h3>
             <h3 id="fuelValue"></h3>
             <h3 id="fromHome">Days way from home:</h3>
-            <h3 id="fromHomeValue"></h3>
+            <h3 id="fromHomeValue"></h3> --}}
             <h2 id="description">Select a planet to travel to..</h2>
         </div>
-    </main>
-</body>
+    </section>
+</main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/startingPlanet.js"></script>
+<script type="text/javascript" src="/js/selectPlanet.js"></script>

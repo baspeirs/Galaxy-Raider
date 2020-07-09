@@ -43,21 +43,25 @@ module.exports = function(app) {
     });
   });
 
+  // this is for localhost:8080/startingplanet
+  app.get("/selectplanet/:id", (req, res) => {
+    db.Character.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [{ all: true, nested: true }]
+    }).then(result => {
+      console.log("html route: ");
+      console.log(result);
+      res.render("selectPlanet", { results: result });
+    });
+  });
+
   // Recieving made character data from splash page.
   app.post("/", (req, res) => {
     testData.push(req.body);
     console.log(testData, "to send to starting planet");
     console.log(testData[1].profession, "to send to starting planet");
-  });
-
-  app.post("/api/newPage", (req, res) => {
-    console.log(req.body);
-    res.end();
-  });
-
-  app.get("/api/newPage", (req, res) => {
-    console.log(req.body);
-    res.end();
   });
 
   app.get("/startingplanet/:id", (req, res) => {
@@ -71,7 +75,6 @@ module.exports = function(app) {
       console.log(result);
       res.render("startingPlanet", { results: result });
     });
-
   });
 
   // route to instructions.html

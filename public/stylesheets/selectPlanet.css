@@ -1,15 +1,57 @@
 #details {
     display: grid;
-    grid: 200px 300px / 1fr;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr;
+    grid-template-rows: 60% 40%;
+
+    /* grid: 1fr 0.3fr / 1fr;
+    height: 100vh;  */
+}
+
+#planets {
+    grid-template-areas: 
+    "planet1 planet2 planet3";
+    
+    color: black;
+    padding: 1em;
+    row-gap: 2em;
+}
+#planet1 {
+    grid-area: planet1;
+    background-color: #d3ac0f;
+    color: black;
+    border: solid navy 7px;
+    text-align: center;
+}
+
+#planet2 {
+    grid-area: planet2;
+    background-color: paleturquoise;
+    color: black;
+    border: solid navy 7px;
+    text-align: center;
+}
+
+#planet3 {
+    grid-area: planet3;
+    background-color: pink;
+    color: black;
+    border: solid navy 7px;
+    text-align: center;
+}
+
+/* #planets {
+    display: grid;
+    grid: 20% 20% 20% / 200px 100px 1fr;
 }
 
 #information {
     display: grid;
-    grid: 0.8fr 0.2fr / 1fr;
+    grid: 0.5fr 0.5fr / 1fr;
     align-content: space-around;
-}
+} */
 
-#button1 {
+/* #button1, #button2, #button3 {
     width: 200px;
     height: 200px
-}
+} */

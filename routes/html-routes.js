@@ -45,15 +45,35 @@ module.exports = function(app) {
 
   // this is for localhost:8080/startingplanet
   app.get("/selectplanet/:id", (req, res) => {
-    db.Character.findOne({
+    db.Planet.findAll({ include: [{ all: true }] }).then(planetRes => {
+      db.Character.findOne({
+        where: {
+          id: req.params.id
+        },
+        include: [{ all: true, nested: true }]
+      }).then(result => {
+        res.render("selectPlanet", { travel: planetRes, results: result });
+      });
+    });
+  });
+
+  // === route for the landingPlanet handlebars
+  app.get("/landingplanet/:planet/:character", (req, res) => {
+    console.log(req.params);
+    db.Planet.findOne({
       where: {
-        id: req.params.id
+        id: req.params.planet
       },
-      include: [{ all: true, nested: true }]
-    }).then(result => {
-      console.log("html route: ");
-      console.log(result);
-      res.render("selectPlanet", { results: result });
+      include: [{ all: true }]
+    }).then(planetRes => {
+      db.Character.findOne({
+        where: {
+          id: req.params.character
+        },
+        include: [{ all: true, nested: true }]
+      }).then(charRes => {
+        res.render("landingPlanet", { planet: planetRes, character: charRes });
+      });
     });
   });
 

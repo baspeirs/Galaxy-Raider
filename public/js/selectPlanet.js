@@ -5,7 +5,23 @@
 //     planet: data
 // }
 
-if (planet) === (earth) {
-    then load landingPage handlebars
-    send $.(ajaxcall) (route: lastPlanet) earth
-}
+$(document).ready(() => {
+  console.log("Ready!");
+  const planetsArray = ["Aakon", "Centauri-IV", "Terra", "Hala", "Knowhere", "Sovereign"];
+  console.log(planetsArray);
+  let visiblePlanets = [];
+  const planetVal = $("#planetName").text();
+
+  console.log(planetVal);
+  switch (planetVal) {
+  case "Centauri-IV":
+    visiblePlanets.push(planetsArray[2], planetsArray[3]);
+    console.log(visiblePlanets, ":visible planets");
+    $("#option1").attr("src", "../images/selectPlanet/option1.png");
+    break;
+  case "Terra":
+    visiblePlanets.push(planetsArray[1], planetsArray[3]);
+    console.log(visiblePlanets, ":visible planets");
+    break;
+  }
+});

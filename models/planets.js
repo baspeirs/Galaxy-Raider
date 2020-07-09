@@ -18,6 +18,18 @@ module.exports = function(sequelize, DataTypes) {
     financier_resources: {
       type: DataTypes.INTEGER,
       allowNull: false
+    },
+    travel1: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    travel2: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    travel3: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   });
   Planet.associate = models => {

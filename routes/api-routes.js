@@ -59,6 +59,23 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/planets/:name/:id", (req, res) => {
+    console.log(req.params);
+    db.Planet.findOne({
+      where: {
+        planet_name: req.params.name
+      }
+    }).then(planetRes => {
+      db.Character.findOne({
+        where: {
+          id: req.params.id
+        }
+      }).then(charRes => {
+        res.json({ planet: planetRes.id, character: charRes.id });
+      });
+    });
+  });
+
   // ===== route for character data =====
   app.get("/api/characters", (req, res) => {
     db.Character.findAll({

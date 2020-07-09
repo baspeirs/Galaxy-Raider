@@ -75,7 +75,7 @@ $(document).ready(() => {
       planetId = 8;
     } else if (selectedRace === "Xandarian") {
       raceId = 3;
-      planetId =1;
+      planetId = 1;
     } else if (selectedAge === "Middle") {
       ageId = 2;
     } else if (selectedAge === "Old") {
@@ -170,8 +170,6 @@ $(document).ready(() => {
       method: "POST"
     })
       .then(result => {
-        console.log(`public: ${result}`);
-        // console.log("Created character!");
         window.location.replace("/startingplanet/" + result.id);
       })
       .then(() => {

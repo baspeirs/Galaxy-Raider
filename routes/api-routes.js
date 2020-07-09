@@ -5,6 +5,7 @@ const db = require("../models");
 let currentShip = "";
 
 module.exports = function(app) {
+  // create new character
   app.post("/api/characters", (req, res) => {
     console.log(req.body, "To find ships somewhere on this body");
     currentShip = req.body.ship;
@@ -16,14 +17,27 @@ module.exports = function(app) {
       ProfessionId: req.body.profession
     })
       .then(result => {
-        console.log("api route: ");
-        console.log(result)
-        // res.json(result);
         res.json({ id: result.id });
       })
       .catch(err => {
         res.status(401).json(err);
       });
+  });
+
+  // update recource points values
+  app.put("/api/planets/:id", (req, res) => {
+    db.Planet.update(
+      {
+        engineering_resources: req.body.engineering_resources,
+        cooking_resources: req.body.cooking_resources,
+        financier_resources: req.body.financier_resources
+      },
+      {
+        where: {
+          id: req.params.id
+        }
+      }
+    ).then(result => console.log(result));
   });
 
   // Route for getting all races and their corresponding planetId

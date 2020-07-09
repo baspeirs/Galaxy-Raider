@@ -147,19 +147,80 @@ $(document).ready(() => {
       enterName();
     }
   }
-  $playButton.on("click", checkRequirements);
 
+  function randomRecourcePoints() {
+    const x = Math.floor(Math.random() * 2000);
+    const y = Math.floor(Math.random() * 2000);
+    const z = Math.floor(Math.random() * 2000);
+    const recObj = {
+      engineering_resources: x,
+      cooking_resources: y,
+      financier_resources: z
+    };
+    return recObj;
+  }
+
+  $playButton.on("click", checkRequirements);
   // A function for making AJAX call to send gameSettings data.
   const sendCharacter = gameSettings => {
     console.log("From splash.js AJAX: ", gameSettings);
     return $.ajax("/api/characters", {
       data: gameSettings,
       method: "POST"
-    }).then(result => {
-      console.log(`public: ${result}`);
-      // console.log("Created character!");
-      window.location.replace("/startingplanet/" + result.id);
-    });
+    })
+      .then(result => {
+        console.log(`public: ${result}`);
+        // console.log("Created character!");
+        window.location.replace("/startingplanet/" + result.id);
+      })
+      .then(() => {
+        $.ajax("api/planets/1", {
+          method: "PUT",
+          data: randomRecourcePoints()
+        });
+      })
+      .then(() => {
+        $.ajax("api/planets/2", {
+          method: "PUT",
+          data: randomRecourcePoints()
+        });
+      })
+      .then(() => {
+        $.ajax("api/planets/3", {
+          method: "PUT",
+          data: randomRecourcePoints()
+        });
+      })
+      .then(() => {
+        $.ajax("api/planets/4", {
+          method: "PUT",
+          data: randomRecourcePoints()
+        });
+      })
+      .then(() => {
+        $.ajax("api/planets/5", {
+          method: "PUT",
+          data: randomRecourcePoints()
+        });
+      })
+      .then(() => {
+        $.ajax("api/planets/6", {
+          method: "PUT",
+          data: randomRecourcePoints()
+        });
+      })
+      .then(() => {
+        $.ajax("api/planets/7", {
+          method: "PUT",
+          data: randomRecourcePoints()
+        });
+      })
+      .then(() => {
+        $.ajax("api/planets/8", {
+          method: "PUT",
+          data: randomRecourcePoints()
+        });
+      });
   };
 
   const sendToStartingPlanet = gameSettings => {

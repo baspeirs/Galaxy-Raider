@@ -25,6 +25,17 @@ module.exports = function(app) {
       });
   });
 
+  // get planet by id
+  // app.get("api/planets/:id", (req, res) => {
+  //   db.Planet.findOne({
+  //     where: {
+  //       id: req.params.id
+  //     }
+  //   }).then(result => {
+  //     res.json({ id: result.id });
+  //   });
+  // });
+
   // update recource points values
   app.put("/api/planets/:id", (req, res) => {
     db.Planet.update(

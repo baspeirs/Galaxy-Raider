@@ -52,6 +52,17 @@ module.exports = function(app) {
     ).then(result => console.log(result));
   });
 
+  // Route for getting all planet data for that planet id.
+  app.get("api/planets/:id", (req, res) => {
+    db.Planet.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(result => {
+      res.json({ id: result.id });
+    });
+  });
+
   // Route for getting all races and their corresponding planetId
   app.get("/api/races", (req, res) => {
     db.Race.findAll({

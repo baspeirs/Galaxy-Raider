@@ -1,14 +1,18 @@
-<link href="/stylesheets/selectPlanet.css" rel="stylesheet"/>
+<link href="/stylesheets/landingPlanet.css" rel="stylesheet"/>
 <main class="container">
     <!-- Nameplate area for displaying top right title screen text. -->
     <section id="details">
         <div id="planets">
-            <h2>Welcom to {{planet.dataValues.planet_name}}, {{character.dataValues.char_name}}</h2>
-            <h4 id="planetName">{{results.dataValues.Planet.dataValues.planet_name}}</h4>
+            <div id="planetValues">{{toJSON planet}}</div>
+            <div id="characterValues">{{toJSON character}}</div>
+            <h2>Welcome to <span id="planetName">{{planet.dataValues.planet_name}}</span>, 
+            <span id="hostileplanet">{{character.dataValues.Race.dataValues.Hostile.dataValues.planet_name}}</span>,
+            <span id="homeplanet">{{character.dataValues.Race.dataValues.Planet.dataValues.planet_name}}</span>
+            </h2>
             <button id="button1" type="button" class="nes-btn is-primary"></button>
             <button> <img>image of planet.</button>
         </div>
     </section>
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="/js/selectPlanet.js"></script>
+<script type="text/javascript" src="/js/landingPlanet.js"></script>

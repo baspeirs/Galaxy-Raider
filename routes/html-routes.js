@@ -72,6 +72,8 @@ module.exports = function(app) {
         },
         include: [{ all: true, nested: true }]
       }).then(charRes => {
+        console.log(planetRes);
+        console.log(charRes);
         res.render("landingPlanet", { planet: planetRes, character: charRes });
       });
     });

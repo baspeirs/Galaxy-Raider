@@ -3,8 +3,6 @@
     <!-- Nameplate area for displaying top right title screen text. -->
     <section id="details">
         <div id="planets">
-            <div id="planetValues">{{toJSON planet}}</div>
-            <div id="characterValues">{{toJSON character}}</div>
             <h2>Welcome to <span id="planetName">{{planet.dataValues.planet_name}}</span>, 
             <span id="hostileplanet">{{character.dataValues.Race.dataValues.Hostile.dataValues.planet_name}}</span>,
             <span id="homeplanet">{{character.dataValues.Race.dataValues.Planet.dataValues.planet_name}}</span>
@@ -12,9 +10,24 @@
             <button id="button1" type="button" class="nes-btn is-primary"></button>
             <button> <img>image of planet.</button>
         </div>
-
-        <div class="select-planet">
-            <button id="leave-planet">Leave Planet</button>
+        <div>
+            {{#if home}}
+                <h2>Welcome home!</h2>
+                
+                <div class="select-planet">
+                    <button id="leave-planet">Leave Planet</button>
+                </div>
+            {{/if}}
+            {{#if hostile}}
+                <h2>You're Dead!</h2>
+            {{/if}}
+            {{#if neutral}}
+                <button id="gatherRecource"><h2>Gather some recourses!</h2></button>
+                
+                <div class="select-planet">
+                    <button id="leave-planet">Leave Planet</button>
+                </div>
+            {{/if}}
         </div>
     </section>
 </main>

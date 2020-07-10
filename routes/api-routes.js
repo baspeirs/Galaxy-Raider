@@ -25,16 +25,16 @@ module.exports = function(app) {
       });
   });
 
-  // get planet by id
-  // app.get("api/planets/:id", (req, res) => {
-  //   db.Planet.findOne({
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   }).then(result => {
-  //     res.json({ id: result.id });
-  //   });
-  // });
+  // get planet by name
+  app.get("/api/planets/:name", (req, res) => {
+    db.Planet.findOne({
+      where: {
+        planet_name: req.params.name
+      }
+    }).then(result => {
+      res.json({ result });
+    });
+  });
 
   // update recource points values
   app.put("/api/planets/:id", (req, res) => {
@@ -50,17 +50,6 @@ module.exports = function(app) {
         }
       }
     ).then(result => console.log(result));
-  });
-
-  // Route for getting all planet data for that planet id.
-  app.get("api/planets/:id", (req, res) => {
-    db.Planet.findOne({
-      where: {
-        id: req.params.id
-      }
-    }).then(result => {
-      res.json({ id: result.id });
-    });
   });
 
   // Route for getting all races and their corresponding planetId
@@ -98,11 +87,38 @@ module.exports = function(app) {
     });
   });
 
-  // ===== route for character data =====
+  // ===== route for all character data =====
   app.get("/api/characters", (req, res) => {
     db.Character.findAll({
       include: [{ all: true, nested: true }]
     }).then(result => {
+      return res.json(result);
+    });
+  });
+
+  // ===== find character by id =====
+  app.get("/api/characters/:id", (req, res) => {
+    db.Character.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [{ all: true, nested: true }]
+    }).then(result => {
+      return res.json(result);
+    });
+  });
+
+  app.put("/api/characters/:id", (req, res) => {
+    db.Character.update(
+      {
+        score: req.body.points
+      },
+      {
+        where: {
+          id: req.params.id
+        }
+      }
+    ).then(result => {
       return res.json(result);
     });
   });
@@ -129,10 +145,6 @@ module.exports = function(app) {
     console.log(currentShip);
     return res.json({ ship: currentShip });
   });
-  // ==== get character by ID ==
-  // app.get("/api/characters/:id", (req, res) => {
-  //   db.Character.
-  // });
 
   app.post("/api/newPage", (req, res) => {
     console.log(req.body);

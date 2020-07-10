@@ -72,10 +72,47 @@ module.exports = function(app) {
         },
         include: [{ all: true, nested: true }]
       }).then(charRes => {
-        console.log(planetRes);
-        console.log(charRes);
-        res.render("landingPlanet", { planet: planetRes, character: charRes });
-        // console.log(charRes);
+        // set variables for planet status (home/hostile/nutral)
+        const currentPlanet = planetRes.planet_name;
+        const homePlanet = charRes.Race.Planet.planet_name;
+        const hostilePlanet = charRes.Race.Hostile.planet_name;
+        if (currentPlanet === homePlanet) {
+          res.render("landingPlanet", {
+            planet: planetRes,
+            character: charRes,
+            home: true,
+            hostile: false,
+            neutral: false
+          });
+        } else if (currentPlanet === hostilePlanet) {
+          // character lost and points are set to zero
+          db.Character.update(
+            {
+              score: 0
+            },
+            {
+              where: {
+                id: req.params.character
+              }
+            }
+          );
+          res.render("landingPlanet", {
+            planet: planetRes,
+            character: charRes,
+            home: false,
+            hostile: true,
+            neutral: false
+          });
+        } else {
+          res.render("landingPlanet", {
+            planet: planetRes,
+            character: charRes,
+            home: false,
+            hostile: false,
+            neutral: true
+          });
+        }
+        // update character's current planet
         db.Character.update(
           {
             PlanetId: req.params.planet

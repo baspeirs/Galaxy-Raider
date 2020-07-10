@@ -21,25 +21,71 @@
 // load function that creates button for them to go to SelectPlanet page
 //
 // }
-
-const $landedPlanet = $("#planetName").text();
-console.log($landedPlanet);
-
-// const $planetValues = $("#planetValues").text();
-// console.log($planetValues, " :planet values.");
-const $hostileplanet = $("#hostileplanet").text();
-console.log($hostileplanet, " :hostile planet.");
-const $homeplanet = $("#homeplanet").text();
-console.log($homeplanet, " :home planet.");
-
-console.log($characterValues.Race.Hostile.id, " :character values");
-
+// set two variables to boolean to be switched if on home/hostile planet
 $(document).ready(() => {
+  const $landedPlanet = $("#planetName").text();
+  const $hostileplanet = $("#hostileplanet").text();
+  const $homeplanet = $("#homeplanet").text();
+
+  let homePlanet = false;
+  let hostilePlanet = false;
+
+  if ($landedPlanet === $homeplanet) {
+    homePlanet = true;
+  } else if ($landedPlanet !== $homeplanet) {
+    homePlanet = false;
+  }
+  if ($landedPlanet === $hostileplanet) {
+    hostilePlanet = true;
+  } else if ($landedPlanet !== $hostileplanet) {
+    hostilePlanet = false;
+  }
+
+  console.log(homePlanet);
+  console.log(hostilePlanet);
+
+  const url = window.location.pathname;
+  const charID = url.substring(url.lastIndexOf("/") + 1);
+
   $("#leave-planet").on("click", () => {
-    const url = window.location.pathname;
-    const charID = url.substring(url.lastIndexOf("/") + 1);
-    // console.log("leave planet");
     window.location.replace("/selectplanet/" + charID);
   });
-});
 
+  $("#gatherRecource").on("click", () => {
+    $.ajax("/api/planets/" + $landedPlanet, {
+      method: "GET"
+    }).then(planetRes => {
+      const cookingPoints = planetRes.result.cooking_resources;
+      const engiPoints = planetRes.result.engineering_resources;
+      const financePoints = planetRes.result.financier_resources;
+      console.log(charID);
+      $.ajax("/api/characters/" + charID, {
+        method: "GET"
+      })
+        .then(charRes => {
+          const charProf = charRes.Profession.profession;
+          const charPoints = charRes.score;
+          if (charProf === "Engineer") {
+            const data = { points: engiPoints + charPoints };
+            $.ajax("/api/characters/" + charID, {
+              method: "PUT",
+              data
+            }).then(result => console.log(result));
+          } else if (charProf === "Cook") {
+            const data = { points: cookingPoints + charPoints };
+            $.ajax("/api/characters/" + charID, {
+              method: "PUT",
+              data
+            }).then(result => console.log(result));
+          } else {
+            const data = { points: financePoints + charPoints };
+            $.ajax("/api/characters/" + charID, {
+              method: "PUT",
+              data
+            }).then(result => console.log(result));
+          }
+        })
+        .then(window.location.replace("/selectplanet/" + charID));
+    });
+  });
+});

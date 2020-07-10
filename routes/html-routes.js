@@ -73,6 +73,17 @@ module.exports = function(app) {
         include: [{ all: true, nested: true }]
       }).then(charRes => {
         res.render("landingPlanet", { planet: planetRes, character: charRes });
+        // console.log(charRes);
+        db.Character.update(
+          {
+            PlanetId: req.params.planet
+          },
+          {
+            where: {
+              id: req.params.character
+            }
+          }
+        );
       });
     });
   });

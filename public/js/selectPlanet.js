@@ -15,23 +15,44 @@ $(document).ready(() => {
     "Knowhere",
     "Sovereign"
   ];
-  // console.log(planetsArray);
   const visiblePlanets = [];
-  const planetVal = $("#planetName").text();
+  const planetVal1 = $("#option1").text();
+  const planetVal2 = $("#option2").text();
+  const planetVal3 = $("#option3").text();
 
-  // console.log(planetVal);
-  switch (planetVal) {
-  case "Centauri-IV":
-    visiblePlanets.push(planetsArray[2], planetsArray[3]);
-    // console.log(visiblePlanets, ":visible planets");
-    $("#option1").attr("src", "../images/selectPlanet/option1.png");
-    break;
-  case "Terra":
-    visiblePlanets.push(planetsArray[1], planetsArray[3]);
-    // console.log(visiblePlanets, ":visible planets");
-    break;
-  }
-});
+  let optionNum = 0;
+  visiblePlanets.push(planetVal1, planetVal2, planetVal3);
+  visiblePlanets.forEach((element) => {
+    let planetName = element.toUpperCase();
+    console.log(planetName);
+    optionNum = optionNum + 1
+    console.log(optionNum);
+    // use switch case
+    switch(planetName) {
+      case "TERRA": 
+      $("#option" + optionNum).css("background-image", "url('../images/selectPlanet/option2.png')");
+      break;
+      case "AAKON": 
+      $("#option" + optionNum).css("background-image", "url('../images/selectPlanet/option6.png')");
+      break;
+      case "CENTAURI-IV": 
+      $("#option" + optionNum).css("background-image", "url('../images/selectPlanet/option5.png')");
+      break;
+      case "HALA": 
+      $("#option" + optionNum).css("background-image", "url('../images/selectPlanet/option8.png')");
+      break;
+      case "KNOWHERE": 
+      $("#option" + optionNum).css("background-image", "url('../images/selectPlanet/option9.png')");
+      break;
+      case "SOVEREIGN": 
+      $("#option" + optionNum).css("background-image", "url('../images/selectPlanet/option4.png')");
+      break;
+    }
+  });
+
+// const printResults = result => {
+//   console.log(result);
+// };
 
 $(".travel-planets").on("click", ".planetItem", function() {
   const traveltext = $(this).text();
@@ -50,5 +71,7 @@ $(".travel-planets").on("click", ".planetItem", function() {
     window.location.replace(
       "/landingplanet/" + result.planet + "/" + result.character
     );
+    // printResults(result);  // use for animaation later
   });
+});
 });

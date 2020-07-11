@@ -108,31 +108,29 @@ $(document).ready(() => {
       console.log(charID);
       $.ajax("/api/characters/" + charID, {
         method: "GET"
-      })
-        .then(charRes => {
-          const charProf = charRes.Profession.profession;
-          const charPoints = charRes.score;
-          if (charProf === "Engineer") {
-            const data = { points: engiPoints + charPoints };
-            $.ajax("/api/characters/" + charID, {
-              method: "PUT",
-              data
-            }).then(result => console.log(result));
-          } else if (charProf === "Cook") {
-            const data = { points: cookingPoints + charPoints };
-            $.ajax("/api/characters/" + charID, {
-              method: "PUT",
-              data
-            }).then(result => console.log(result));
-          } else {
-            const data = { points: financePoints + charPoints };
-            $.ajax("/api/characters/" + charID, {
-              method: "PUT",
-              data
-            }).then(result => console.log(result));
-          }
-        })
-        .then(window.location.replace("/selectplanet/" + charID));
+      }).then(charRes => {
+        const charProf = charRes.Profession.profession;
+        const charPoints = charRes.score;
+        if (charProf === "Engineer") {
+          const data = { points: engiPoints + charPoints };
+          $.ajax("/api/characters/" + charID, {
+            method: "PUT",
+            data
+          }).then(window.location.replace("/selectplanet/" + charID));
+        } else if (charProf === "Cook") {
+          const data = { points: cookingPoints + charPoints };
+          $.ajax("/api/characters/" + charID, {
+            method: "PUT",
+            data
+          }).then(window.location.replace("/selectplanet/" + charID));
+        } else {
+          const data = { points: financePoints + charPoints };
+          $.ajax("/api/characters/" + charID, {
+            method: "PUT",
+            data
+          }).then(window.location.replace("/selectplanet/" + charID));
+        }
+      });
     });
   });
 
@@ -141,6 +139,6 @@ $(document).ready(() => {
   });
 
   $("#returnHome").on("click", () => {
-    window.location.replace("/")
+    window.location.replace("/");
   });
 });

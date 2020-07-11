@@ -1,35 +1,33 @@
 <link href="/stylesheets/landingPlanet.css" rel="stylesheet"/>
 <main class="container">
     <!-- Nameplate area for displaying top right title screen text. -->
-    <section id="details">
-        <div id="planets">
-            <h2>Welcome to <span id="planetName">{{planet.dataValues.planet_name}}</span>, 
-            <span id="hostileplanet">{{character.dataValues.Race.dataValues.Hostile.dataValues.planet_name}}</span>,
-            <span id="homeplanet">{{character.dataValues.Race.dataValues.Planet.dataValues.planet_name}}</span>
-            </h2>
-            <button id="button1" type="button" class="nes-btn is-primary"></button>
-            <button> <img>image of planet.</button>
+    <div id="planets">
+        <h2 id="headliner">Welcome to 
+            <span id="planetName">{{planet.dataValues.planet_name}}</span>. 
+        </h2>
+        <span id="hostilePlanet">{{character.dataValues.Race.dataValues.Hostile.dataValues.planet_name}}</span>
+        <span id="homePlanet">{{character.dataValues.Race.dataValues.Planet.dataValues.planet_name}}</span>
+    </div>
+    <div id="decisionDisplay">
+        {{#if home}}
+            <h2>Welcome home!</h2>
+            
+            <div class="select-planet">
+                <button id="leave-planet">Leave Planet</button>
+            </div>
+        {{/if}}
+        {{#if hostile}}
+            <h3 id="hostileLanding">You took a wrong turn and landed on a hostile planet.</h3>
+            <h2 id="gameOver">You're Dead!</h2>
+        {{/if}}
+        {{#if neutral}}
+            <button id="gatherRecource"><h2>Gather some recourses!</h2></button>
+            
+            <div class="select-planet">
+                <button id="leave-planet">Leave Planet</button>
+            </div>
+        {{/if}}
         </div>
-        <div>
-            {{#if home}}
-                <h2>Welcome home!</h2>
-                
-                <div class="select-planet">
-                    <button id="leave-planet">Leave Planet</button>
-                </div>
-            {{/if}}
-            {{#if hostile}}
-                <h2>You're Dead!</h2>
-            {{/if}}
-            {{#if neutral}}
-                <button id="gatherRecource"><h2>Gather some recourses!</h2></button>
-                
-                <div class="select-planet">
-                    <button id="leave-planet">Leave Planet</button>
-                </div>
-            {{/if}}
-        </div>
-    </section>
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/landingPlanet.js"></script>

@@ -90,12 +90,5 @@ $("#next").on("click", () => {
   const charID = url.substring(url.lastIndexOf("/") + 1);
   console.log(charID);
 
-  // const characterData = () => {
-  //     return $.ajax({
-  //     url: "/api/ships",
-  //     method: "GET"
-  //     });
-  // };
-
   window.location.replace("/selectplanet/" + charID);
 });

@@ -76,10 +76,24 @@ visiblePlanets.forEach(element => {
   }
 });
 
-// const printResults = result => {
-//   console.log(result);
-// };
-
+// Event that animates All Planets image.
+$(document).ready(() => {
+  console.log("Yes its on load.");
+  $('html,body').animate({scrollTop:0},800);
+  $("#allPlanets").animate(
+    {
+      opacity: 0.25,
+      left: "+=50",
+      height: "toggle"
+    },
+    5000,
+    () => {
+      // Animation complete.
+      $( "#allPlanets" ).hide();
+    }
+  );
+});
+// Click events for traveling to new planet.
 $(".travel-planets").on("click", ".planetItem", function() {
   const traveltext = $(this).text();
   const travelTo = {

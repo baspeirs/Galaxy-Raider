@@ -5,6 +5,10 @@
     grid: 1fr 1fr / 1fr;
 }
 
+#instructions {
+    background-color: hsl(120, 60%, 70%, 0.3);
+}
+
 #content {
     display: grid;
     grid: 1fr / 1fr 1fr 1fr;

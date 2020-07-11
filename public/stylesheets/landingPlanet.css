@@ -1,3 +1,6 @@
+body {
+    width: 100%
+}
 .container {
     display: grid;
     grid-template-columns: auto;
@@ -22,6 +25,11 @@ body {
 #headliner {
     text-align: center;
     background-color: hsl(120, 60%, 70%, 0.3);
+}
+
+.select-planet {
+    display: grid;
+    align-content: center;
 }
 
 #decisionDisplay {

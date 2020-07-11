@@ -23,9 +23,19 @@
 // }
 // set two variables to boolean to be switched if on home/hostile planet
 $(document).ready(() => {
+  const backgroundUrls = [
+    "../../images/landingPlanet/landingOption6.png",
+    "../../images/landingPlanet/landingOption5.png",
+    "../../images/landingPlanet/landingOption2.png",
+    "../../images/landingPlanet/landingOption8.png",
+    "../../images/landingPlanet/landingOption9.png",
+    "../../images/landingPlanet/landingOption4.png",
+    "../../images/landingPlanet/landingOption1.png",
+    "../../images/landingPlanet/landingOption7.png"
+  ];
   const $landedPlanet = $("#planetName").text();
-  const $hostileplanet = $("#hostileplanet").text();
-  const $homeplanet = $("#homeplanet").text();
+  const $hostileplanet = $("#hostilePlanet").text();
+  const $homeplanet = $("#homePlanet").text();
 
   let homePlanet = false;
   let hostilePlanet = false;
@@ -43,10 +53,47 @@ $(document).ready(() => {
 
   console.log(homePlanet);
   console.log(hostilePlanet);
-
+  console.log($landedPlanet);
   const url = window.location.pathname;
   const charID = url.substring(url.lastIndexOf("/") + 1);
 
+  // Choosing which planet background to display based on planet.
+  switch ($landedPlanet) {
+    case "Aakon":
+      $(".container").css("background-image", "url(" + backgroundUrls[0] + ")");
+      $(".container").css("background-size", "contain");
+      break;
+    case "Centauri-IV":
+      $(".container").css("background-image", "url(" + backgroundUrls[1] + ")");
+      $(".container").css("background-size", "contain");
+      break;
+    case "Terra":
+      $(".container").css("background-image", "url(" + backgroundUrls[2] + ")");
+      $(".container").css("background-size", "contain");
+      break;
+    case "Hala":
+      $(".container").css("background-image", "url(" + backgroundUrls[3] + ")");
+      $(".container").css("background-size", "contain");
+      break;
+    case "Knowhere":
+      $(".container").css("background-image", "url(" + backgroundUrls[4] + ")");
+      $(".container").css("background-size", "contain");
+      break;
+    case "Sovereign":
+      $(".container").css("background-image", "url(" + backgroundUrls[5] + ")");
+      $(".container").css("background-size", "contain");
+      break;
+    case "Xandar":
+      $(".container").css("background-image", "url(" + backgroundUrls[6] + ")");
+      $(".container").css("background-size", "contain");
+      break;
+      case "Sakaar":
+        $(".container").css("background-image", "url(" + backgroundUrls[7] + ")");
+        $(".container").css("background-size", "contain");
+        break;
+  }
+
+  // On click events for leaving planet and gathering resources.
   $("#leave-planet").on("click", () => {
     window.location.replace("/selectplanet/" + charID);
   });

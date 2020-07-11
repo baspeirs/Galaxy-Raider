@@ -4,9 +4,19 @@
     grid-template-rows: 1fr auto;
     height: 100%;
     background: url("../images/selectPlanet/spaceBG.png");
-    background-size: contain;
+    background-size: cover;
+    /* background-size: contain; */
     background-repeat: no-repeat;
     background-position: center;
+}
+
+body {
+    width: 100%;
+}
+
+.select-planet {
+    margin: auto;
+    grid-column: 2;
 }
 
 #headliner {

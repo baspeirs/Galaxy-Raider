@@ -10,7 +10,16 @@
         <div id="ships">
 
         </div>
-        <h2 id="description">Select a planet to travel to..</h2>
+        <div class="bottom-content">
+            <h2 id="description">Select a planet to travel to..</h2>
+
+            <div id="char-data">
+                <h3>{{results.dataValues.char_name}}</h3>
+                <h3>Score: {{results.dataValues.score}}</h3>
+                <h3>Profession: {{results.dataValues.Profession.dataValues.profession}}</h3>
+                <h3>Race: {{results.dataValues.Race.dataValues.race}}</h3>
+            </div>
+        </div>
     </section>
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

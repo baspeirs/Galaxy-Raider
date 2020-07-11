@@ -1,5 +1,5 @@
 body {
-    width: fit-content;
+    width: 100%
 }
 .container {
     display: grid;
@@ -15,6 +15,11 @@ body {
 #headliner {
     text-align: center;
     background-color: hsl(120, 60%, 70%, 0.3);
+}
+
+.select-planet {
+    display: grid;
+    align-content: center;
 }
 
 #decisionDisplay {

@@ -9,10 +9,9 @@
         <span id="homePlanet">{{character.dataValues.Race.dataValues.Planet.dataValues.planet_name}}</span>
     </div>
     <div id="decisionDisplay">
-        {{#if home}}
-            <h2>Welcome home!</h2>
-            
+        {{#if home}}            
             <div class="select-planet">
+                <h2>Welcome home!</h2>
                 <button id="leave-planet">Leave Planet</button>
             </div>
         {{/if}}

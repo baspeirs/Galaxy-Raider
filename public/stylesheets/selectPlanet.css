@@ -24,3 +24,10 @@
     background-position: center;
 }
 
+#allPlanets {
+    height: 100vh;
+    background-image: url("../images/selectPlanet/all_Planets.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+

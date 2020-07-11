@@ -9,10 +9,11 @@
         <span id="homePlanet">{{character.dataValues.Race.dataValues.Planet.dataValues.planet_name}}</span>
     </div>
     <div id="decisionDisplay">
-        {{#if home}}            
+        {{#if home}}
             <div class="select-planet">
                 <h2>Welcome home!</h2>
                 <button id="leave-planet">Leave Planet</button>
+                <button id="complete-game">Complete Mission</button>
             </div>
         {{/if}}
         {{#if hostile}}
@@ -20,13 +21,25 @@
             <h2 id="gameOver">You're Dead!</h2>
         {{/if}}
         {{#if neutral}}
-            <button id="gatherRecource"><h2>Gather some recourses!</h2></button>
+            <button id="gatherRecource"><h2>Gather some resources!</h2></button>
             
             <div class="select-planet">
                 <button id="leave-planet">Leave Planet</button>
             </div>
         {{/if}}
         </div>
+    <dialog class="nes-dialog" id="win-modal">
+            <form method="dialog">
+                <div class="nes-field">
+                    <label for="name_field">Congragulations!</label>
+                    <p>You have traveled the galaxy and brought your planet some valueable resources!</p>
+                    <p>Your Score: {{character.dataValues.score}}</p>
+                    <menu class="dialog-menu">
+                        <button class="nes-btn" id="returnHome">Return to Home Page</button>
+                    </menu>
+                </div>
+            </form>
+        </dialog>
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/landingPlanet.js"></script>

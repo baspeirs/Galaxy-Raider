@@ -61,36 +61,36 @@ $(document).ready(() => {
   switch ($landedPlanet) {
     case "Aakon":
       $(".container").css("background-image", "url(" + backgroundUrls[0] + ")");
-      $(".container").css("background-size", "contain");
+      // $(".container").css("background-size", "contain");
       break;
     case "Centauri-IV":
       $(".container").css("background-image", "url(" + backgroundUrls[1] + ")");
-      $(".container").css("background-size", "contain");
+      // $(".container").css("background-size", "contain");
       break;
     case "Terra":
       $(".container").css("background-image", "url(" + backgroundUrls[2] + ")");
-      $(".container").css("background-size", "contain");
+      // $(".container").css("background-size", "contain");
       break;
     case "Hala":
       $(".container").css("background-image", "url(" + backgroundUrls[3] + ")");
-      $(".container").css("background-size", "contain");
+      // $(".container").css("background-size", "contain");
       break;
     case "Knowhere":
       $(".container").css("background-image", "url(" + backgroundUrls[4] + ")");
-      $(".container").css("background-size", "contain");
+      // $(".container").css("background-size", "contain");
       break;
     case "Sovereign":
       $(".container").css("background-image", "url(" + backgroundUrls[5] + ")");
-      $(".container").css("background-size", "contain");
+      // $(".container").css("background-size", "contain");
       break;
     case "Xandar":
       $(".container").css("background-image", "url(" + backgroundUrls[6] + ")");
-      $(".container").css("background-size", "contain");
+      // $(".container").css("background-size", "contain");
       break;
-      case "Sakaar":
-        $(".container").css("background-image", "url(" + backgroundUrls[7] + ")");
-        $(".container").css("background-size", "contain");
-        break;
+    case "Sakaar":
+    $(".container").css("background-image", "url(" + backgroundUrls[7] + ")");
+      // $(".container").css("background-size", "contain");
+    break;
   }
 
   // On click events for leaving planet and gathering resources.
@@ -134,5 +134,13 @@ $(document).ready(() => {
         })
         .then(window.location.replace("/selectplanet/" + charID));
     });
+  });
+
+  $("#complete-game").on("click", () => {
+    document.getElementById("win-modal").showModal();
+  });
+
+  $("#returnHome").on("click", () => {
+    window.location.replace("/")
   });
 });

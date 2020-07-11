@@ -31,3 +31,12 @@
     background-repeat: no-repeat;
 }
 
+.bottom-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+#char-data {
+    grid-column: 3;
+}
